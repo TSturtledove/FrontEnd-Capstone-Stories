@@ -5,29 +5,29 @@ app.config(function($routeProvider, $locationProvider) {
   $routeProvider
   .when("/", {
     controller: "mainCon",
-    templateUrl: "partials/main.html"
+    templateUrl: "app/partials/main.html"
 
   })
 
   .when("/signin", {
     controller: "signinCon",
-    templateUrl: "partials/signin.html"
+    templateUrl: "app/partials/signin.html"
 
   })
 
   .when("/profile", {
     controller: "profileCon",
-    templateUrl: "partials/profile.html"
+    templateUrl: "app/partials/profile.html"
 
   })
 
   .when("/storypage", {
     controller: "storypageCon",
-    templateUrl: "partials/storypage.html"
+    templateUrl: "app/partials/storypage.html"
 
   })
 
-  otherwise({
+  .otherwise({
     redirectTo: "/"
   })
 })
