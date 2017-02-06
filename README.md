@@ -1,2 +1,3 @@
 # FrontEnd-Capstone-Stories
-A web app mimicing book reading
+A web app mimicking book reading
+project board, https://github.com/TSturtledove/FrontEnd-Capstone-Stories/projects/1
