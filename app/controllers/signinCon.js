@@ -6,12 +6,6 @@ app.controller('signinCon', function($scope, $location, authorizeFactory, $http)
 		})
 	}
 	$scope.register = function() {
-		let userData = {
-			email: $scope.email,
-			password: $scope.password,
-			mystories:"",
-			bookmarks:""
-		}
 		authorizeFactory.registerUser($scope.email, $scope.password)
 		.then(function() {
 			console.log("uid is: ",authorizeFactory.getuid())

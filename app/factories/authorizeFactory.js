@@ -6,7 +6,7 @@ let uid = null
     signIn : function(email, password) {
       return $q.resolve(firebase.auth().signInWithEmailAndPassword(email, password))
       .then (function(data){
-        console.log("the setter ran and we got this ", data)
+        console.log("the signin ran and we got this ", data)
       })
     },
     registerUser : function(email, password) {
@@ -27,6 +27,12 @@ let uid = null
         bookmarks: ""
       }
       $http.post(url, JSON.stringify(data))
+    },
+    signOut : function() {
+      return $q.resolve(firebase.auth().signOut())
+      .then(function(){
+        uid = null
+      })
     }
   }
 })
