@@ -34,5 +34,17 @@ let uid = null
         uid = null
       })
     }
+    // ,
+		// poststory : function(name, tale) {
+    //   const url = "https://frontend-760f7.firebaseio.com/stories.json"
+		// 	let data = {
+		// 		title: name,
+		// 		tale: tale
+		// 	}
+		// 	$http.post(url, JSON.stringify(data))
+    //   .then(function(){
+    //     console.log("story posted")
+    //   })
+		// }
   }
 })
