@@ -19,5 +19,11 @@ app.controller('signinCon', function($scope, $location, authorizeFactory, $http)
 		})
 
 	}
+	$scope.signout = function() {
+		authorizeFactory.signOut()
+		.then(function(){
+			console.log("the currentUser is ",firebase.auth().currentUser)
+		})
+	}
 
 	})
