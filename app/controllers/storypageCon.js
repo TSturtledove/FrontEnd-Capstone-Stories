@@ -48,6 +48,11 @@ $scope.titleName =$routeParams.storyName
 //	Bookmark button
 //************************************
 
+// I need to call to a function in a new factory
+// that will push the bookmark info to firebase
+// but that will keep all bookmark info separate based
+// on story
+
 $scope.mark = function(){
 	bookmark = count
 }
@@ -95,11 +100,10 @@ $scope.gotomark = function(){
 
 			if(currentStory == value.title){
 				innerStory = value
-
+				// console.log("key is ",key)
+				// console.log("value is ",value)
+				// console.log("yo ", innerStory)
 			}
-			// console.log("key is ",key)
-			// console.log("value is ",value)
-			// console.log("yo ", innerStory)
 		})
 
 //Using this "innerStory" value you can do a search by matching titles and
@@ -113,8 +117,6 @@ $scope.gotomark = function(){
 		// console.log("the title is ",innerStory.title)
 		turntoarray(innerStory.tale, bar);
 		console.log(actualStory)
-		// console.log("data ", value[0])
-		// console.log("data ", value[1].data)
 	})
 
 
@@ -124,7 +126,7 @@ $scope.gotomark = function(){
 
 
 
-	console.log("here we go again::: ",actualStory)
+	// console.log("here we go again::: ",actualStory)
 
 
 
