@@ -85,30 +85,37 @@ $scope.gotomark = function(){
 //		getting the overall story information
 //**************************************
 
-// 	pullInfoFactory.getStories()
-// 	.then(function(stories){
-// 		// console.log("stories data ", stories)
-// 		angular.forEach(stories, function(value, key){
-// 			// console.log("key is ",key)
-// 			// console.log("value is ",value)
-// 			innerStory = value
-// 			// console.log("yo ", innerStory)
-// 		})
-//
-// //Using this "innerStory" value you can do a search by matching titles and
-// // pull the tale up from that, so
-// // if(thing you clicked in DOM == innerStory.title){
-// //	print tale to array and post using the functions you have here
-// // }
-//
-// 		// console.log("again ",innerStory)
-// 		// console.log("the tale is ",innerStory.tale)
-// 		// console.log("the title is ",innerStory.title)
-// 		turntoarray(innerStory.tale, bar);
-// 		console.log(actualStory)
-// 		// console.log("data ", value[0])
-// 		// console.log("data ", value[1].data)
-// 	})
+	pullInfoFactory.getStories()
+	.then(function(stories){
+		// console.log("stories data ", stories)
+		currentStory = $routeParams.storyName
+		angular.forEach(stories, function(value, key){
+			// console.log("current title is: ",value.title)
+			// console.log("current title is: ",currentStory)
+
+			if(currentStory == value.title){
+				innerStory = value
+
+			}
+			// console.log("key is ",key)
+			// console.log("value is ",value)
+			// console.log("yo ", innerStory)
+		})
+
+//Using this "innerStory" value you can do a search by matching titles and
+// pull the tale up from that, so
+// if(thing you clicked in DOM == innerStory.title){
+//	print tale to array and post using the functions you have here
+// }
+
+		// console.log("again ",innerStory)
+		// console.log("the tale is ",innerStory.tale)
+		// console.log("the title is ",innerStory.title)
+		turntoarray(innerStory.tale, bar);
+		console.log(actualStory)
+		// console.log("data ", value[0])
+		// console.log("data ", value[1].data)
+	})
 
 
 	//**************************
