@@ -33,7 +33,7 @@ app.config(function($routeProvider, $locationProvider) {
 
   })
 
-  .when("/storypage", {
+  .when("/storypage/:storyName", {
     controller: "storypageCon",
     templateUrl: "app/partials/storypage.html"
 

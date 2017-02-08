@@ -46,5 +46,7 @@ let uid = null
     //     console.log("story posted")
     //   })
 		// }
+
+    
   }
 })

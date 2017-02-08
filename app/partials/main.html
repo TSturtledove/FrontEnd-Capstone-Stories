@@ -1,1 +1,11 @@
 <h1>Main Page Test</h1>
+
+<div>
+  <ul>
+    <li ng-repeat="(key, value) in books">
+      <!-- <p ng-repeat="(key, value) in name"> -->
+        <a href="#/storypage/{{value.title}}">{{value.title}}</a>
+      <!-- </p> -->
+    </li>
+  </ul>
+</div>
