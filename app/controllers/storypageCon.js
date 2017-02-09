@@ -52,6 +52,7 @@ $scope.titleName =$routeParams.storyName
 // that will push the bookmark info to firebase
 // but that will keep all bookmark info separate based
 // on story
+// name of story +
 
 $scope.mark = function(){
 	bookmark = count
@@ -70,17 +71,46 @@ $scope.gotomark = function(){
 	}
 }
 
+$scope.save = function(){
+	console.log(firebase.auth().currentUser.email)
+	let currentUser = firebase.auth().currentUser.email
+	pullInfoFactory.getUsers()
+	.then(function(users){
+		angular.forEach(users, function(value, key){
+			console.log("name of checked is: ",value.name)
+			console.log("current name is: ",currentUser)
+
+			if(currentUser == value.name){
+				// console.log("key is ",key)
+				console.log("active user is ",value.name)
+				let bookmarks = value.bookmarks
+				// turntoarray(bookmarks, bar);
+				// let index = array.indexOF
+				// console.log("yo ", innerStory)
+			}
+			})
+
+	})
+	// let bookList = {
+	// 	mystories: "{{$routeParams.storyName}}"
+	// }
+	// http.patch()
+}
+
+
+//*************************
+//*************************
 
 
 //************************
 //		function to turn the tale strings into array
 //************************
 
-	function turntoarray(stringToSplit, separator) {
-		actualStory = stringToSplit.split(separator);
-		$scope.text = actualStory
-		$scope.blockOText = actualStory[count]
-	}
+	// function turntoarray(stringToSplit, separator) {
+	// 	actualStory = stringToSplit.split(separator);
+	// 	$scope.text = actualStory
+	// 	$scope.blockOText = actualStory[count]
+	// }
 
 //*******************
 //*******************
@@ -115,8 +145,15 @@ $scope.gotomark = function(){
 		// console.log("again ",innerStory)
 		// console.log("the tale is ",innerStory.tale)
 		// console.log("the title is ",innerStory.title)
-		turntoarray(innerStory.tale, bar);
-		console.log(actualStory)
+		pullInfoFactory.turntoarray(innerStory.tale, bar)
+		.then(function(newstory){
+			actualStory = newstory
+			$scope.text = actualStory
+			$scope.blockOText = actualStory[count]
+			console.log(actualStory)
+
+		})
+
 	})
 
 

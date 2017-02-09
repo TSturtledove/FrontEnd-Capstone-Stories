@@ -1,4 +1,4 @@
-app.factory("pullInfoFactory", function($http){
+app.factory("pullInfoFactory", function($q, $http){
   return{
     getStories : function() {
       return $http.get("https://frontend-760f7.firebaseio.com/stories.json")
@@ -7,6 +7,21 @@ app.factory("pullInfoFactory", function($http){
         return value.data
       })
 
+    },
+    getUsers : function() {
+      return $http.get("https://frontend-760f7.firebaseio.com/user.json")
+      .then(function(value){
+        console.log(value)
+        return value.data
+      })
+
+    },
+    turntoarray : function(stringToSplit, separator) {
+      let defered = $q.defer();
+      newarray = stringToSplit.split(separator)
+      console.log("the new array made in factory ",newarray)
+      defered.resolve(newarray)
+      return defered.promise
     }
 
   }
