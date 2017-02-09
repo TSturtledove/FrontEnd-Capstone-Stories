@@ -104,18 +104,23 @@ $scope.save = function(){
 
 					if($routeParams.storyName == bookarray[index]){
 						$scope.blockOText = "story already added to your stories"
+						console.log("array is ",bookarray)
+
 					}else{
 						bookarray.splice(0, 0, $routeParams.storyName)
 						sendbook = bookarray.join(bar)
-						console.log(sendbook)
+						console.log("the sendbook value is ",sendbook)
 
 						let bookList = {
-							mystories: bookarray
+							mystories: sendbook
 						}
 						console.log("bookList is ",bookList)
 						console.log("key is ",key)
+						console.log("array is ",bookarray)
+						console.log("mystoires on firebase has been updated with sendbook info")
 
-						// $http.patch(`https://frontend-760f7.firebaseio.com/user/${key}/.json`, JSON.stringify(bookList))
+
+						$http.patch(`https://frontend-760f7.firebaseio.com/user/${key}/.json`, JSON.stringify(bookList))
 
 					}
 
