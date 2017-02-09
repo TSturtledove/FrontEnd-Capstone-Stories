@@ -4,9 +4,11 @@ let actualStory = []
 let bar = "|"
 let count = 0
 let bookmark = "box"
+let bookmarkarray = []
 let bookarray = []
 let sendbook = ""
 let index = -1
+let markindex = -1
 	// $scope.money = "gogopowerrangers"
 $scope.titleName =$routeParams.storyName
 
@@ -74,67 +76,197 @@ $scope.gotomark = function(){
 	}
 }
 
+
+
+//**************************
+//**************************
+
+
+//***********************************************
+//		New bookmark add button
+//***********************************************
+
+
+// $scope.mark = function(){
+//
+// 	if(firebase.auth().currentUser == null){
+// 		console.log("no one is signed in!")
+// 	}else{
+// 			let currentUser = firebase.auth().currentUser.email
+// 		console.log("current user is ",currentUser)
+// 		pullInfoFactory.getUsers()
+// 		.then(function(users){
+// 			angular.forEach(users, function(value, key){
+// 				// console.log("name of checked is: ",value.name)
+// 				// console.log("current name is: ",currentUser)
+//
+// 				if(currentUser == value.name){
+//
+// 					// console.log("key is ",key)
+// 					// console.log("active user is ",value.name)
+//
+// 					let bookmarks = value.bookmarks
+// 					pullInfoFactory.turntoarray(bookmarks, bar)
+// 					.then(function(spot){
+// 					//	console.log("the current array of bookmarks ",spot)
+//
+// 						bookmarkarray = spot
+// 						console.log("the current array of bookmarks ",bookmarkarray)
+// 						markindex = bookmarkarray.indexOf($routeParams.storyName)
+// 						console.log("the index of the thing is ",index)//Use this for targeting to delete
+//
+// 						if($routeParams.storyName == bookmarkarray[index]){
+// 							$scope.blockOText = "There is already a bookmark for this story"
+// 							console.log("array is ",bookmarkarray)
+//
+// 						}else{
+// 							bookmarkarray.splice(0, 0, $routeParams.storyName)
+// 							bookmarkarray.splice(0, 0, count)
+// 							sendmark = bookmarkarray.join(bar)
+// 							console.log("the sendmark value is ",sendmark)
+//
+// 							let bookmarkList = {
+// 								bookmarks: sendmark
+// 							}
+// 							console.log("bookmarkList is ",bookmarkList)
+// 							console.log("key is ",key)
+// 							console.log("array is ",bookmarkarray)
+// 							console.log("bookmarks on firebase has been updated with sendbook info")
+//
+//
+// 							$http.patch(`https://frontend-760f7.firebaseio.com/user/${key}/.json`, JSON.stringify(bookmarkList))
+//
+// 						}
+//
+// 					})
+//
+// 				} //if end
+// 			})
+// 		})
+// 	}
+//
+//
+// }
+
+
+
+
+//**************************
+//**************************
+
+
+
+
+
+
+//***********************************************
+//		New bookmark goto button
+//***********************************************
+
+
+
+
+//**************************
+//**************************
+
+
+
+
+//***********************************************
+//		New bookmark remove button
+//***********************************************
+
+
+
+
+
+
+//************************************
+//************************************
+
+
+
+
+
+
+
+//*************************got up to here checking code
+
+
+
+
+
+
+
+//************************************
+//		Save button for saving stories to profile
+//************************************
+
 $scope.save = function(){
-	console.log(firebase.auth().currentUser.email)
-	let currentUser = firebase.auth().currentUser.email
-	pullInfoFactory.getUsers()
-	.then(function(users){
-		angular.forEach(users, function(value, key){
-			// console.log("name of checked is: ",value.name)
-			// console.log("current name is: ",currentUser)
 
-			if(currentUser == value.name){
+	if(firebase.auth().currentUser == null){
+		console.log("no one is signed in!")
+	}else{
+			let currentUser = firebase.auth().currentUser.email
+		console.log("current user is ",currentUser)
+	// 	console.log(firebase.auth().currentUser.email)
+	// 	let currentUser = firebase.auth().currentUser.email
+		pullInfoFactory.getUsers()
+		.then(function(users){
+			angular.forEach(users, function(value, key){
+				// console.log("name of checked is: ",value.name)
+				// console.log("current name is: ",currentUser)
 
-				// console.log("key is ",key)
-				// console.log("active user is ",value.name)
+				if(currentUser == value.name){
 
-				// let bookmarks = value.bookmarks
-				// pullInfoFactory.turntoarray(bookmarks, bar)
-				// .then(function(spot){
-				// 	console.log("the current array of bookmarks ",spot)
-				// })
+					// console.log("key is ",key)
+					// console.log("active user is ",value.name)
 
-				let savedbooks = value.mystories
-				pullInfoFactory.turntoarray(savedbooks, bar)
-				.then(function(novel){
-					bookarray = novel
-					console.log("the current array of books ",bookarray)
-					index = bookarray.indexOf($routeParams.storyName)
-					console.log("the index of the thing is ",index)//Use this for targeting to delete
+					let savedbooks = value.mystories
+					pullInfoFactory.turntoarray(savedbooks, bar)
+					.then(function(novel){
+						bookarray = novel
+						console.log("the current array of books ",bookarray)
+						index = bookarray.indexOf($routeParams.storyName)
+						console.log("the index of the thing is ",index)//Use this for targeting to delete
 
-					if($routeParams.storyName == bookarray[index]){
-						$scope.blockOText = "story already added to your stories"
-						console.log("array is ",bookarray)
+						if($routeParams.storyName == bookarray[index]){
+							$scope.blockOText = "story already added to your stories"
+							console.log("array is ",bookarray)
 
-					}else{
-						bookarray.splice(0, 0, $routeParams.storyName)
-						sendbook = bookarray.join(bar)
-						console.log("the sendbook value is ",sendbook)
+						}else{
+							bookarray.splice(0, 0, $routeParams.storyName)
+							sendbook = bookarray.join(bar)
+							console.log("the sendbook value is ",sendbook)
 
-						let bookList = {
-							mystories: sendbook
+							let bookList = {
+								mystories: sendbook
+							}
+							console.log("bookList is ",bookList)
+							console.log("key is ",key)
+							console.log("array is ",bookarray)
+							console.log("mystoires on firebase has been updated with sendbook info")
+
+
+							$http.patch(`https://frontend-760f7.firebaseio.com/user/${key}/.json`, JSON.stringify(bookList))
+
 						}
-						console.log("bookList is ",bookList)
-						console.log("key is ",key)
-						console.log("array is ",bookarray)
-						console.log("mystoires on firebase has been updated with sendbook info")
 
+					})
 
-						$http.patch(`https://frontend-760f7.firebaseio.com/user/${key}/.json`, JSON.stringify(bookList))
-
-					}
-
-				})
-
-			} //if end
+				} //if end
+			})
 		})
-	})
+	}
+
 
 }
 
 
 //*************************
 //*************************
+
+
 
 
 //************************
