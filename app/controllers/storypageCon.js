@@ -4,6 +4,9 @@ let actualStory = []
 let bar = "|"
 let count = 0
 let bookmark = "box"
+let bookarray = []
+let sendbook = ""
+let index = -1
 	// $scope.money = "gogopowerrangers"
 $scope.titleName =$routeParams.storyName
 
@@ -77,24 +80,51 @@ $scope.save = function(){
 	pullInfoFactory.getUsers()
 	.then(function(users){
 		angular.forEach(users, function(value, key){
-			console.log("name of checked is: ",value.name)
-			console.log("current name is: ",currentUser)
+			// console.log("name of checked is: ",value.name)
+			// console.log("current name is: ",currentUser)
 
 			if(currentUser == value.name){
-				// console.log("key is ",key)
-				console.log("active user is ",value.name)
-				let bookmarks = value.bookmarks
-				// turntoarray(bookmarks, bar);
-				// let index = array.indexOF
-				// console.log("yo ", innerStory)
-			}
-			})
 
+				// console.log("key is ",key)
+				// console.log("active user is ",value.name)
+
+				// let bookmarks = value.bookmarks
+				// pullInfoFactory.turntoarray(bookmarks, bar)
+				// .then(function(spot){
+				// 	console.log("the current array of bookmarks ",spot)
+				// })
+
+				let savedbooks = value.mystories
+				pullInfoFactory.turntoarray(savedbooks, bar)
+				.then(function(novel){
+					bookarray = novel
+					console.log("the current array of books ",bookarray)
+					index = bookarray.indexOf($routeParams.storyName)
+					console.log("the index of the thing is ",index)//Use this for targeting to delete
+
+					if($routeParams.storyName == bookarray[index]){
+						$scope.blockOText = "story already added to your stories"
+					}else{
+						bookarray.splice(0, 0, $routeParams.storyName)
+						sendbook = bookarray.join(bar)
+						console.log(sendbook)
+
+						let bookList = {
+							mystories: bookarray
+						}
+						console.log("bookList is ",bookList)
+						console.log("key is ",key)
+
+						// $http.patch(`https://frontend-760f7.firebaseio.com/user/${key}/.json`, JSON.stringify(bookList))
+
+					}
+
+				})
+
+			} //if end
+		})
 	})
-	// let bookList = {
-	// 	mystories: "{{$routeParams.storyName}}"
-	// }
-	// http.patch()
+
 }
 
 
@@ -150,7 +180,7 @@ $scope.save = function(){
 			actualStory = newstory
 			$scope.text = actualStory
 			$scope.blockOText = actualStory[count]
-			console.log(actualStory)
+			// console.log(actualStory)
 
 		})
 

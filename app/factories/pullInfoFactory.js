@@ -16,9 +16,10 @@ app.factory("pullInfoFactory", function($q, $http){
       })
 
     },
+    //factories have to return promises
     turntoarray : function(stringToSplit, separator) {
       let defered = $q.defer();
-      newarray = stringToSplit.split(separator)
+      let newarray = stringToSplit.split(separator)
       console.log("the new array made in factory ",newarray)
       defered.resolve(newarray)
       return defered.promise
