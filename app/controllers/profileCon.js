@@ -17,13 +17,27 @@ app.controller('profileCon', function($scope, $location, $http, authorizeFactory
 			console.log("this is where things are for the main page: ",stories)
 		})
 
+
+	//*******************************************
+	//navigation buttons
+	//*****************************
+
 	$scope.signout = function() {
 		authorizeFactory.signOut()
 		.then(function(){
 			console.log("the currentUser is ",firebase.auth().currentUser)
-			$location.url("/signin")
 		})
 	}
+
+	$scope.home = function() {
+			$location.url("/")
+		}
+
+
+	//********************************************
+	//*******************************************
+
+
 
 
 

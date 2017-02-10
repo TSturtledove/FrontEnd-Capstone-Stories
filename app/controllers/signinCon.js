@@ -21,6 +21,11 @@ app.controller('signinCon', function($scope, $location, authorizeFactory, $http)
 		})
 
 	}
+
+	$scope.home = function() {
+			$location.url("/")
+		}
+
 	$scope.signout = function() {
 		authorizeFactory.signOut()
 		.then(function(){

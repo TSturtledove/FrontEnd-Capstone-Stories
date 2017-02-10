@@ -1,4 +1,4 @@
-app.controller('storypageCon', function($scope, $http, pullInfoFactory, $routeParams){
+app.controller('storypageCon', function($scope, $http, pullInfoFactory, $routeParams, $location){
 let innerStory = []
 let actualStory = []
 let bar = "|"
@@ -11,6 +11,47 @@ let index = -1
 let markindex = -1
 	// $scope.money = "gogopowerrangers"
 $scope.titleName =$routeParams.storyName
+
+
+//*******************************************
+//navigation buttons
+//*****************************
+
+$scope.signIn = function() {
+		$location.url("/signin")
+}
+
+$scope.signout = function() {
+	authorizeFactory.signOut()
+	.then(function(){
+		console.log("the currentUser is ",firebase.auth().currentUser)
+	})
+}
+
+$scope.home = function() {
+		$location.url("/")
+	}
+
+$scope.profile = function() {
+	if(firebase.auth().currentUser == null){
+		console.log("no one is signed in!")
+		$location.url("/signin")
+	}else{
+		$location.url("/profile")
+	}
+}
+
+
+//********************************************
+//*******************************************
+
+
+
+
+
+
+
+
 
 	//******************
 	//  buttons for navigating the story
