@@ -211,6 +211,7 @@ app.controller('profileCon', function($scope, $location, $http, authorizeFactory
 
 
 										$scope.blockOText = "Bookmarks for this story have been cleared"
+										
 
 									}
 
