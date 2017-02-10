@@ -7,6 +7,23 @@ var config = {
   };
   firebase.initializeApp(config);
 
+  const checkForAuth = {
+    checkForAuth ($location, $rootScope) {
+      // http://stackoverflow.com/questions/37370224/firebase-stop-listening-onauthstatechanged
+      const authReady = firebase.auth().onAuthStateChanged(function(user){
+        authReady()
+        if (!user) {
+          console.log("there be no one here")
+          // $location.url('/login')
+        }
+        else {
+          $rootScope.uid = firebase.auth().currentUser.uid
+          console.log("there be someone signed in")
+        }
+      })
+    }
+  }
+
 
 
 
@@ -17,25 +34,33 @@ app.config(function($routeProvider, $locationProvider) {
   $routeProvider
   .when("/", {
     controller: "mainCon",
-    templateUrl: "app/partials/main.html"
+    templateUrl: "app/partials/main.html",
+    resolve : checkForAuth
+
 
   })
 
   .when("/signin", {
     controller: "signinCon",
-    templateUrl: "app/partials/signin.html"
+    templateUrl: "app/partials/signin.html",
+    resolve : checkForAuth
+
 
   })
 
   .when("/profile", {
     controller: "profileCon",
-    templateUrl: "app/partials/profile.html"
+    templateUrl: "app/partials/profile.html",
+    resolve : checkForAuth
+
 
   })
 
   .when("/storypage/:storyName", {
     controller: "storypageCon",
-    templateUrl: "app/partials/storypage.html"
+    templateUrl: "app/partials/storypage.html",
+    resolve : checkForAuth
+
 
   })
 
