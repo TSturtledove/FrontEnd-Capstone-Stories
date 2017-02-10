@@ -58,24 +58,24 @@ $scope.titleName =$routeParams.storyName
 // but that will keep all bookmark info separate based
 // on story
 // name of story +
-
-$scope.mark = function(){
-	bookmark = count
-}
-
-$scope.clear = function(){
-	bookmark = "box"
-}
-
-$scope.gotomark = function(){
-	if(bookmark == "box"){
-		$scope.blockOText = "you don't have a bookmark"
-	}else{
-		count = bookmark
-		$scope.blockOText = actualStory[count]
-	}
-}
-
+//
+// $scope.mark = function(){
+// 	bookmark = count
+// }
+//
+// $scope.clear = function(){
+// 	bookmark = "box"
+// }
+//
+// $scope.gotomark = function(){
+// 	if(bookmark == "box"){
+// 		$scope.blockOText = "you don't have a bookmark"
+// 	}else{
+// 		count = bookmark
+// 		$scope.blockOText = actualStory[count]
+// 	}
+// }
+//
 
 
 //**************************
@@ -87,66 +87,64 @@ $scope.gotomark = function(){
 //***********************************************
 
 
-// $scope.mark = function(){
-//
-// 	if(firebase.auth().currentUser == null){
-// 		console.log("no one is signed in!")
-// 	}else{
-// 			let currentUser = firebase.auth().currentUser.email
-// 		console.log("current user is ",currentUser)
-// 		pullInfoFactory.getUsers()
-// 		.then(function(users){
-// 			angular.forEach(users, function(value, key){
-// 				// console.log("name of checked is: ",value.name)
-// 				// console.log("current name is: ",currentUser)
-//
-// 				if(currentUser == value.name){
-//
-// 					// console.log("key is ",key)
-// 					// console.log("active user is ",value.name)
-//
-// 					let bookmarks = value.bookmarks
-// 					pullInfoFactory.turntoarray(bookmarks, bar)
-// 					.then(function(spot){
-// 					//	console.log("the current array of bookmarks ",spot)
-//
-// 						bookmarkarray = spot
-// 						console.log("the current array of bookmarks ",bookmarkarray)
-// 						markindex = bookmarkarray.indexOf($routeParams.storyName)
-// 						console.log("the index of the thing is ",index)//Use this for targeting to delete
-//
-// 						if($routeParams.storyName == bookmarkarray[index]){
-// 							$scope.blockOText = "There is already a bookmark for this story"
-// 							console.log("array is ",bookmarkarray)
-//
-// 						}else{
-// 							bookmarkarray.splice(0, 0, $routeParams.storyName)
-// 							bookmarkarray.splice(0, 0, count)
-// 							sendmark = bookmarkarray.join(bar)
-// 							console.log("the sendmark value is ",sendmark)
-//
-// 							let bookmarkList = {
-// 								bookmarks: sendmark
-// 							}
-// 							console.log("bookmarkList is ",bookmarkList)
-// 							console.log("key is ",key)
-// 							console.log("array is ",bookmarkarray)
-// 							console.log("bookmarks on firebase has been updated with sendbook info")
-//
-//
-// 							$http.patch(`https://frontend-760f7.firebaseio.com/user/${key}/.json`, JSON.stringify(bookmarkList))
-//
-// 						}
-//
-// 					})
-//
-// 				} //if end
-// 			})
-// 		})
-// 	}
-//
-//
-// }
+$scope.mark = function(){
+
+	if(firebase.auth().currentUser == null){
+		console.log("no one is signed in!")
+	}else{
+			let currentUser = firebase.auth().currentUser.email
+		console.log("current user is ",currentUser)
+		pullInfoFactory.getUsers()
+		.then(function(users){
+			angular.forEach(users, function(value, key){
+				// console.log("name of checked is: ",value.name)
+				// console.log("current name is: ",currentUser)
+
+				if(currentUser == value.name){
+
+					// console.log("key is ",key)
+					// console.log("active user is ",value.name)
+
+					let bookmarks = value.bookmarks
+					pullInfoFactory.turntoarray(bookmarks, bar)
+					.then(function(spot){
+					//	console.log("the current array of bookmarks ",spot)
+
+						bookmarkarray = spot
+						console.log("the current array of bookmarks ",bookmarkarray)
+						markindex = bookmarkarray.indexOf($routeParams.storyName)
+						console.log("the index of the thing is ",markindex)//Use this for targeting to delete
+
+						if($routeParams.storyName == bookmarkarray[markindex]){
+							$scope.blockOText = "There is already a bookmark for this story"
+							console.log("array is ",bookmarkarray)
+
+						}else{
+							bookmarkarray.splice(0, 0, $routeParams.storyName)
+							bookmarkarray.splice(0, 0, count)
+							sendmark = bookmarkarray.join(bar)
+							console.log("the sendmark value is ",sendmark)
+
+							let bookmarkList = {
+								bookmarks: sendmark
+							}
+							console.log("bookmarkList is ",bookmarkList)
+							console.log("key is ",key)
+							console.log("array is ",bookmarkarray)
+							console.log("bookmarks on firebase has been updated with sendmark info")
+
+
+							$http.patch(`https://frontend-760f7.firebaseio.com/user/${key}/.json`, JSON.stringify(bookmarkList))
+
+						}
+
+					})
+
+				} //if end
+			})
+		})
+	}
+}
 
 
 
@@ -166,6 +164,58 @@ $scope.gotomark = function(){
 
 
 
+$scope.gotomark = function(){
+
+	if(firebase.auth().currentUser == null){
+		console.log("no one is signed in!")
+	}else{
+			let currentUser = firebase.auth().currentUser.email
+		console.log("current user is ",currentUser)
+		pullInfoFactory.getUsers()
+		.then(function(users){
+			angular.forEach(users, function(value, key){
+				// console.log("name of checked is: ",value.name)
+				// console.log("current name is: ",currentUser)
+
+				if(currentUser == value.name){
+
+					// console.log("key is ",key)
+					// console.log("active user is ",value.name)
+
+					let bookmarks = value.bookmarks
+					pullInfoFactory.turntoarray(bookmarks, bar)
+					.then(function(spot){
+					//	console.log("the current array of bookmarks ",spot)
+
+						bookmarkarray = spot
+						console.log("the current array of bookmarks ",bookmarkarray)
+						markindex = bookmarkarray.indexOf($routeParams.storyName)
+						console.log("the index of the thing is ",markindex)//Use this for targeting to delete
+
+
+//***************Where you changed code
+
+
+
+						if($routeParams.storyName == bookmarkarray[markindex]){
+							let goto = markindex -1
+							count = bookmarkarray[goto]
+							$scope.blockOText = actualStory[count]
+							console.log("array is ",bookmarkarray)
+
+						}else{
+							$scope.blockOText = "You have no bookmarks for this story"
+						}
+					})//.then end
+
+				} //if end
+			})
+		})
+	}
+}
+
+
+
 //**************************
 //**************************
 
@@ -176,6 +226,72 @@ $scope.gotomark = function(){
 //		New bookmark remove button
 //***********************************************
 
+
+
+$scope.clear = function(){
+
+	if(firebase.auth().currentUser == null){
+		console.log("no one is signed in!")
+	}else{
+			let currentUser = firebase.auth().currentUser.email
+		console.log("current user is ",currentUser)
+		pullInfoFactory.getUsers()
+		.then(function(users){
+			angular.forEach(users, function(value, key){
+				// console.log("name of checked is: ",value.name)
+				// console.log("current name is: ",currentUser)
+
+				if(currentUser == value.name){
+
+					// console.log("key is ",key)
+					// console.log("active user is ",value.name)
+
+					let bookmarks = value.bookmarks
+					pullInfoFactory.turntoarray(bookmarks, bar)
+					.then(function(spot){
+					//	console.log("the current array of bookmarks ",spot)
+
+						bookmarkarray = spot
+						console.log("the current array of bookmarks ",bookmarkarray)
+						markindex = bookmarkarray.indexOf($routeParams.storyName)
+						console.log("the index of the thing is ",markindex)//Use this for targeting to delete
+
+
+//***************Where you changed code
+
+
+
+						if($routeParams.storyName == bookmarkarray[markindex]){
+
+							let goto = markindex -1
+							bookmarkarray.splice(goto, 2)
+							sendmark = bookmarkarray.join(bar)
+							console.log("the sendmark value is ",sendmark)
+							let bookmarkList = {
+								bookmarks: sendmark
+							}
+							console.log("bookmarkList is ",bookmarkList)
+							console.log("key is ",key)
+							console.log("array is ",bookmarkarray)
+							console.log("bookmarks on firebase has been updated with sendmark info")
+
+
+							$http.patch(`https://frontend-760f7.firebaseio.com/user/${key}/.json`, JSON.stringify(bookmarkList))
+
+
+							$scope.blockOText = "Bookmarks for this story have been cleared"
+
+						}else{
+							$scope.blockOText = "You have no bookmarks for this story"
+						}
+
+					})//.then end
+
+				} //if end
+			})
+		})
+	}
+}
 
 
 
