@@ -461,6 +461,8 @@ $scope.save = function(){
 
 
 //
+//This is here as reference for split function.
+//
 // function splitString(stringToSplit, separator) {
 //   var arrayOfStrings = stringToSplit.split(separator);
 //
