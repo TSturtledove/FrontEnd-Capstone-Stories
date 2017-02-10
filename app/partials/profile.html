@@ -5,9 +5,11 @@
 
 <div>
   <ul>
-    <li ng-repeat="(key, value) in books">
+    <li ng-repeat="story in storyarray">
       <!-- <p ng-repeat="(key, value) in name"> -->
-        <a href="#/storypage/{{value.title}}">{{value.title}}</a>
+        <a href="#/storypage/{{story}}">{{story}}</a>
+        <button ng-click="remove(story)">Remove story from list</button>
+
       <!-- </p> -->
     </li>
   </ul>

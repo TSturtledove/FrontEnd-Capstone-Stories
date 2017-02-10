@@ -9,15 +9,13 @@ var config = {
 
   const checkForAuth = {
     checkForAuth ($location, $rootScope) {
-      // http://stackoverflow.com/questions/37370224/firebase-stop-listening-onauthstatechanged
       const authReady = firebase.auth().onAuthStateChanged(function(user){
         authReady()
         if (!user) {
           console.log("there be no one here")
-          // $location.url('/login')
         }
         else {
-          $rootScope.uid = firebase.auth().currentUser.uid
+          // $rootScope.uid = firebase.auth().currentUser.uid
           console.log("there be someone signed in")
         }
       })
