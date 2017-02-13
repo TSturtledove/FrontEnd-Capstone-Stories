@@ -11,6 +11,7 @@ let index = -1
 let markindex = -1
 	// $scope.money = "gogopowerrangers"
 $scope.titleName =$routeParams.storyName
+$scope.position = count
 
 
 //*******************************************
@@ -63,6 +64,8 @@ $scope.profile = function() {
 		}else{
 			count++
 			$scope.blockOText = actualStory[count]
+			$scope.position = count
+
 		}
 		// console.log(actualStory)
 	}
@@ -71,15 +74,21 @@ $scope.profile = function() {
 		if(count<=0){
 			count = 0
 			$scope.blockOText = actualStory[count]
+			$scope.position = count
+
 		}else{
 			count--
 			$scope.blockOText = actualStory[count]
+			$scope.position = count
+
 		}
 	}
 
 	$scope.startstuff = function(){
 		count = 0
 		$scope.blockOText = actualStory[count]
+		$scope.position = count
+
 	}
 
 	$scope.endstuff = function(){
@@ -279,6 +288,8 @@ $scope.gotomark = function(){
 							let goto = markindex -1
 							count = bookmarkarray[goto]
 							$scope.blockOText = actualStory[count]
+							$scope.position = count
+							
 							console.log("array is ",bookmarkarray)
 
 						}else{
