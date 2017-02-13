@@ -1,4 +1,4 @@
-app.controller('profileCon', function(firebase, $scope, $location, $http, authorizeFactory, pullInfoFactory, $routeParams){
+app.controller('profileCon', function($scope, $location, $http, $route, authorizeFactory, pullInfoFactory, $routeParams){
 
 	// let innerStory = []
 	// let actualStory = []
@@ -75,15 +75,6 @@ app.controller('profileCon', function(firebase, $scope, $location, $http, author
 						pullInfoFactory.turntoarray(savedbooks, bar)
 						.then(function(novel){
 							$scope.storyarray = novel
-
-							var analytics = new firebase('https://frontend-760f7.firebaseio.com/user/${key}/');
-							console.log(analytics)
-							// var totalstories = analytics.child('mystories');
-							// totalstories.on('value', poppage);
-
-
-
-
 							// console.log("the current array of books ",bookarray)
 							// index = bookarray.indexOf($routeParams.storyName)
 							// console.log("the index of the thing is ",index)//Use this for targeting to delete
@@ -126,7 +117,6 @@ app.controller('profileCon', function(firebase, $scope, $location, $http, author
 
 	firebase.auth().onAuthStateChanged(function(){
 		poppage()
-
 	})
 
 
@@ -198,11 +188,9 @@ app.controller('profileCon', function(firebase, $scope, $location, $http, author
 
 
 								$http.patch(`https://frontend-760f7.firebaseio.com/user/${key}/.json`, JSON.stringify(bookList))
-
-
-
-
-
+								.then (function(data){
+									poppage()
+								})
 
 								//*************** code for removing the bookmark for the removed story
 
@@ -244,17 +232,6 @@ app.controller('profileCon', function(firebase, $scope, $location, $http, author
 									console.log("Doood")
 
 								})//.then end
-								// $scope.storyarray = []
-								//  $scope.storyarray.$remove(page)
-
-								// poppage() //<-- trying to call the poppage function to
-								// return $scope.storyarray
-								// console.log("!!!!!!!!okay, here ", $scope.storyarray)
-								// // run and display the newlist
-
-
-
-
 
 							// }else{
 								// $scope.blockOText = "You have no bookmarks for this story"
