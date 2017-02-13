@@ -15,7 +15,7 @@ var config = {
           console.log("there be no one here")
         }
         else {
-          // $rootScope.uid = firebase.auth().currentUser.uid
+          $rootScope.uid = firebase.auth().currentUser.uid
           console.log("there be someone signed in")
         }
       })

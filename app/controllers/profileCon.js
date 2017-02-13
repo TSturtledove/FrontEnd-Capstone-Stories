@@ -1,4 +1,4 @@
-app.controller('profileCon', function($scope, $location, $http, authorizeFactory, pullInfoFactory, $routeParams){
+app.controller('profileCon', function(firebase, $scope, $location, $http, authorizeFactory, pullInfoFactory, $routeParams){
 
 	// let innerStory = []
 	// let actualStory = []
@@ -11,11 +11,11 @@ app.controller('profileCon', function($scope, $location, $http, authorizeFactory
 	let index = -1
 	let markindex = -1
 
-	pullInfoFactory.getStories()
-		.then(function(stories){
-			$scope.books = stories
-			console.log("this is where things are for the main page: ",stories)
-		})
+	// pullInfoFactory.getStories()
+		// .then(function(stories){
+			// $scope.books = stories
+			// console.log("this is where things are for the main page: ",stories)
+		// })
 
 
 	//*******************************************
@@ -53,12 +53,15 @@ app.controller('profileCon', function($scope, $location, $http, authorizeFactory
 	// 			let currentUser = firebase.auth().currentUser.email
 	// 		console.log("current user is ",currentUser)
 	// 	// 	console.log(firebase.auth().currentUser.email)
+	function poppage (){
 			pullInfoFactory.getUsers()
 			.then(function(users){
 				if(firebase.auth().currentUser == null){
 					console.log("no one is signed in")
 				}else{
 				let currentUser = firebase.auth().currentUser.email
+				console.log("current name is: ",currentUser)
+
 				angular.forEach(users, function(value, key){
 					// console.log("name of checked is: ",value.name)
 					// console.log("current name is: ",currentUser)
@@ -72,6 +75,15 @@ app.controller('profileCon', function($scope, $location, $http, authorizeFactory
 						pullInfoFactory.turntoarray(savedbooks, bar)
 						.then(function(novel){
 							$scope.storyarray = novel
+
+							var analytics = new firebase('https://frontend-760f7.firebaseio.com/user/${key}/');
+							console.log(analytics)
+							// var totalstories = analytics.child('mystories');
+							// totalstories.on('value', poppage);
+
+
+
+
 							// console.log("the current array of books ",bookarray)
 							// index = bookarray.indexOf($routeParams.storyName)
 							// console.log("the index of the thing is ",index)//Use this for targeting to delete
@@ -104,7 +116,18 @@ app.controller('profileCon', function($scope, $location, $http, authorizeFactory
 				})
 			}
 		})
+	}
 
+
+
+//**************
+//so it only checks for important info after it varifies a user
+//*************
+
+	firebase.auth().onAuthStateChanged(function(){
+		poppage()
+
+	})
 
 
 
@@ -164,17 +187,21 @@ app.controller('profileCon', function($scope, $location, $http, authorizeFactory
 								// let goto = index -1
 								bookarray.splice(index, 1)
 								sendbook = bookarray.join(bar)
-								console.log("the sendbooks value is ",sendbook)
+								// console.log("the sendbooks value is ",sendbook)
 								let bookList = {
 									mystories: sendbook
 								}
-								console.log("bookList is ",bookList)
-								console.log("key is ",key)
-								console.log("array is ",bookarray)
+								// console.log("bookList is ",bookList)
+								// console.log("key is ",key)
+								// console.log("array is ",bookarray)
 								console.log("mystories on firebase has been updated with sendbook info")
 
 
 								$http.patch(`https://frontend-760f7.firebaseio.com/user/${key}/.json`, JSON.stringify(bookList))
+
+
+
+
 
 
 								//*************** code for removing the bookmark for the removed story
@@ -184,9 +211,9 @@ app.controller('profileCon', function($scope, $location, $http, authorizeFactory
 								//	console.log("the current array of bookmarks ",spot)
 
 									bookmarkarray = spot
-									console.log("the current array of bookmarks ",bookmarkarray)
+									// console.log("the current array of bookmarks ",bookmarkarray)
 									markindex = bookmarkarray.indexOf(page)
-									console.log("the index of the thing is ",markindex)//Use this for targeting to delete
+									// console.log("the index of the thing is ",markindex)//Use this for targeting to delete
 
 
 
@@ -197,38 +224,59 @@ app.controller('profileCon', function($scope, $location, $http, authorizeFactory
 										let goto = markindex -1
 										bookmarkarray.splice(goto, 2)
 										sendmark = bookmarkarray.join(bar)
-										console.log("the sendmark value is ",sendmark)
+										// console.log("the sendmark value is ",sendmark)
 										let bookmarkList = {
 											bookmarks: sendmark
 										}
-										console.log("bookmarkList is ",bookmarkList)
-										console.log("key is ",key)
-										console.log("array is ",bookmarkarray)
+										// console.log("bookmarkList is ",bookmarkList)
+										// console.log("key is ",key)
+										// console.log("array is ",bookmarkarray)
 										console.log("bookmarks on firebase has been updated with sendmark info")
 
 
 										$http.patch(`https://frontend-760f7.firebaseio.com/user/${key}/.json`, JSON.stringify(bookmarkList))
 
 
-										$scope.blockOText = "Bookmarks for this story have been cleared"
-										
+										// $scope.blockOText = "Bookmarks for this story have been cleared"
 
 									}
 
+									console.log("Doood")
+
 								})//.then end
+								// $scope.storyarray = []
+								//  $scope.storyarray.$remove(page)
+
+								// poppage() //<-- trying to call the poppage function to
+								// return $scope.storyarray
+								// console.log("!!!!!!!!okay, here ", $scope.storyarray)
+								// // run and display the newlist
+
+
 
 
 
 							// }else{
 								// $scope.blockOText = "You have no bookmarks for this story"
 							}
+							console.log("Dogfood")
 
 						})//.then end
+						console.log("throwing")
+
 
 					} //if end
+					console.log("kiteflying")
+
 				})
+				console.log("opentocans")
+
 			})
+			console.log("ikuiku")
+
 		}
+		console.log("bacon")
+
 	}
 
 
