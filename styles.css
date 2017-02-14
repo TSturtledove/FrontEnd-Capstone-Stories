@@ -17,7 +17,8 @@ body {
 .direction {
   background-color: #dbb670;
   border: none;
-  width: 25%;
+  padding: 3px 10px;
+  margin: 3px 5px;
 }
 
 .basiclist {
@@ -31,4 +32,59 @@ body {
 
 .linkstorylist:hover {
   color: #737373;
+}
+
+.basicspacer {
+  padding: 5px 6px;
+  margin: 5px 10px;
+}
+
+.imagesize {
+  /*margin: 5px auto;*/
+  width: 50%;
+  height: 50%;
+}
+
+.ninja {
+  visibility: hidden;
+}
+
+/*********************Flexboxclasses*******************/
+
+.maincontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rowcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 3px 4px;
+}
+
+.rowStartcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 3px 4px;
+}
+
+.rowEndcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 3px 4px;
+}
+
+.imagecontainer {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+  height: auto;
+}
+
+.middle {
+  justify-content: center;
 }

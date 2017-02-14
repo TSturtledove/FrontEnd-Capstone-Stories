@@ -1,35 +1,43 @@
 <h1>Story Page Test</h1>
 <h2>{{titleName}}</h2>
-<div>
-  <button ng-click="home()">Home</button>
-  <button ng-click="signIn()">Signin/Register</button>
-  <button ng-click="signout()">Signout</button>
-  <button ng-click="profile()">Profile</button>
-
+<div class="rowcontainer">
+  <a class="direction linkstorylist" ng-click="home()">Home</a>
+  <a class="direction linkstorylist" ng-click="signIn()">Signin/Register</a>
+  <a class="direction linkstorylist" ng-click="signout()">Signout</a>
+  <a class="direction linkstorylist" ng-click="profile()">Profile</a>
 </div>
 
-<button ng-click="startstuff()">beginstory</button>
-
-<button ng-click="losestuff()">losestory</button>
-
-<button ng-click="getstuff()">getstory</button>
-
-<button ng-click="endstuff()">endstory</button>
+<audio id="audio" class="ninja" src="audio/{{titleName}}{{position}}.mp3" autoplay controls></audio>
 
 <div>
   <ul>
   <li ng-repeat="line in text">{{line}}</li>
 </ul>
 </div>
-<div>
-  <img src="img/{{titleName}}{{position}}.png">
+<div class="maincontainer">
+<div class="imagecontainer">
+  <img class="imagesize" src="img/{{titleName}}{{position}}.png">
+</div>
+
+<div class="middle">
   <h2>{{titleName}}{{position}}</h2>
   <!-- <h3>{{text}}</h3> -->
   <h3>{{blockOText}}</h3>
   <!-- <h1>{{money}}</h1> -->
 </div>
+</div>
+<div class="rowStartcontainer">
+<a class="direction linkstorylist" ng-click="startstuff()">beginstory</a>
 
-<button ng-click="mark()">mark</button>
-<button ng-click="gotomark()">gotomark</button>
-<button ng-click="clear()">clearmark</button>
-<button ng-click="save()">save story</button>
+<a class="direction linkstorylist" ng-click="losestuff()">losestory</a>
+
+<a class="direction linkstorylist" ng-click="getstuff()">getstory</a>
+
+<a class="direction linkstorylist" ng-click="endstuff()">endstory</a>
+</div>
+<div class="rowEndcontainer">
+<a class="direction linkstorylist" ng-click="mark()">mark</a>
+<a class="direction linkstorylist" ng-click="gotomark()">gotomark</a>
+<a class="direction linkstorylist" ng-click="clear()">clearmark</a>
+<a class="direction linkstorylist" ng-click="save()">save story</a>
+</div>

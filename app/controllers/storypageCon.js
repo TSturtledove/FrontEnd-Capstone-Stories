@@ -1,4 +1,4 @@
-app.controller('storypageCon', function($scope, $http, pullInfoFactory, $routeParams, $location){
+app.controller('storypageCon', function($scope, $http, pullInfoFactory, authorizeFactory, $routeParams, $location){
 let innerStory = []
 let actualStory = []
 let bar = "|"
@@ -289,7 +289,7 @@ $scope.gotomark = function(){
 							count = bookmarkarray[goto]
 							$scope.blockOText = actualStory[count]
 							$scope.position = count
-							
+
 							console.log("array is ",bookmarkarray)
 
 						}else{
