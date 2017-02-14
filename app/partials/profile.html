@@ -7,10 +7,10 @@
 
 
 <div>
-  <ul>
+  <ul class="basiclist">
     <li ng-repeat="story in storyarray">
       <!-- <p ng-repeat="(key, value) in name"> -->
-        <a href="#/storypage/{{story}}">{{story}}</a>
+        <a class="linkstorylist" href="#/storypage/{{story}}">{{story}}</a>
         <button ng-click="remove(story)">Remove story from list</button>
 
       <!-- </p> -->

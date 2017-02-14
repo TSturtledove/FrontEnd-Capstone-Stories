@@ -1,6 +1,6 @@
 <h1>Main Page Test</h1>
 
-<button ng-click="signIn()">Signin/Register</button>
+<div class="direction" ng-click="signIn()">Signin/Register</div>
 
 
 
@@ -9,10 +9,10 @@
 
 
 <div>
-  <ul>
+  <ul class="basiclist">
     <li ng-repeat="(key, value) in books">
       <!-- <p ng-repeat="(key, value) in name"> -->
-        <a href="#/storypage/{{value.title}}">{{value.title}}</a>
+        <a class="linkstorylist" href="#/storypage/{{value.title}}">{{value.title}}</a>
       <!-- </p> -->
     </li>
   </ul>
