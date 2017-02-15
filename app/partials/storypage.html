@@ -1,0 +1,35 @@
+<h1>Story Page Test</h1>
+<h2>{{titleName}}</h2>
+<div>
+  <button ng-click="home()">Home</button>
+  <button ng-click="signIn()">Signin/Register</button>
+  <button ng-click="signout()">Signout</button>
+  <button ng-click="profile()">Profile</button>
+
+</div>
+
+<button ng-click="startstuff()">beginstory</button>
+
+<button ng-click="losestuff()">losestory</button>
+
+<button ng-click="getstuff()">getstory</button>
+
+<button ng-click="endstuff()">endstory</button>
+
+<div>
+  <ul>
+  <li ng-repeat="line in text">{{line}}</li>
+</ul>
+</div>
+<div>
+  <img src="img/{{titleName}}{{position}}.png">
+  <h2>{{titleName}}{{position}}</h2>
+  <!-- <h3>{{text}}</h3> -->
+  <h3>{{blockOText}}</h3>
+  <!-- <h1>{{money}}</h1> -->
+</div>
+
+<button ng-click="mark()">mark</button>
+<button ng-click="gotomark()">gotomark</button>
+<button ng-click="clear()">clearmark</button>
+<button ng-click="save()">save story</button>
