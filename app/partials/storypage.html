@@ -6,8 +6,16 @@
   <a class="direction linkstorylist" ng-click="signout()">Signout</a>
   <a class="direction linkstorylist" ng-click="profile()">Profile</a>
 </div>
+<label>Check for sound: <input type="checkbox" ng-model="box1"></label><br/>
 
-<audio id="audio" class="ninja" src="audio/{{titleName}}{{position}}.mp3" autoplay controls></audio>
+<span ng-switch on="box1">
+    <!-- <h1 ng-switch-when="true" autoplay>{{title}}</h1> -->
+    <!-- <h1 ng-switch-default>{{title}}</h1> -->
+    <audio id="audio" class="ninja"  ng-switch-default src="audio/{{titleName}}{{position}}.mp3" controls></audio>
+
+<audio id="audio" class="ninja"  ng-switch-when="true" autoplay src="audio/{{titleName}}{{position}}.mp3" controls></audio>
+</span>
+
 
 <div>
   <ul>
