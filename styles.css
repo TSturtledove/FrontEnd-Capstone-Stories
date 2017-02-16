@@ -1,5 +1,5 @@
 body {
-  background-color: #dba670;
+  background: url(img/parchmentback01.png);
   font-family: "Gentium Book Basic", Vollkorn, "Libre Baskerville", Cardo, serif;
 }
 
@@ -52,9 +52,15 @@ body {
 /*********************Flexboxclasses*******************/
 
 .maincontainer {
+  /*background: url(img\parchmentback02.png);*/
+  background-image: url(img\wat01.jpg);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  border: 5px solid black;
+  width: 75%;
+  height: auto;
+  margin: auto auto 5px;
 }
 
 .rowcontainer {
@@ -80,11 +86,13 @@ body {
 
 .imagecontainer {
   display: flex;
-  justify-content: space-around;
-  width: 70%;
-  height: auto;
+  justify-content: center;
+  /*width: 70%;*/
+  height: 70%;
 }
 
 .middle {
   justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
 }

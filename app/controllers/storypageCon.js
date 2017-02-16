@@ -60,6 +60,7 @@ $scope.profile = function() {
 	$scope.getstuff = function(){
 		if(count>=actualStory.length-1){
 			count = actualStory.length
+			$scope.position = count
 			$scope.blockOText = "End of story, please read again"
 		}else{
 			count++
@@ -93,6 +94,8 @@ $scope.profile = function() {
 
 	$scope.endstuff = function(){
 		count = actualStory.length
+		console.log(count)
+		$scope.position = count
 		$scope.blockOText = "End of story, please read again"
 	}
 

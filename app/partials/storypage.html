@@ -1,11 +1,12 @@
-<h1>Story Page Test</h1>
-<h2>{{titleName}}</h2>
+<!-- <h1>Story Page Test</h1> -->
 <div class="rowcontainer">
   <a class="direction linkstorylist" ng-click="home()">Home</a>
   <a class="direction linkstorylist" ng-click="signIn()">Signin/Register</a>
   <a class="direction linkstorylist" ng-click="signout()">Signout</a>
   <a class="direction linkstorylist" ng-click="profile()">Profile</a>
 </div>
+<h2>{{titleName}}</h2>
+
 <label>Check for sound: <input type="checkbox" ng-model="box1"></label><br/>
 
 <span ng-switch on="box1">
@@ -17,11 +18,11 @@
 </span>
 
 
-<div>
+<!-- <div>
   <ul>
   <li ng-repeat="line in text">{{line}}</li>
 </ul>
-</div>
+</div> -->
 <div class="maincontainer">
 <div class="imagecontainer">
   <img class="imagesize" src="img/{{titleName}}{{position}}.png">
