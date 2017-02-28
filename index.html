@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Stories</title>
+  <link href="https://fonts.googleapis.com/css?family=Cardo|Gentium+Book+Basic|Libre+Baskerville|Vollkorn" rel="stylesheet">
+  <link rel="stylesheet" href="bower_components\animate.css\animate.min.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body ng-app="storyApp">
+  <!-- <h1>Testing</h1> -->
+
+  <div ng-view>
+  </div>
+
+<!-- angular-->
+  <script src="bower_components\angular\angular.js"></script>
+  <script src="bower_components\angular-route\angular-route.js"></script>
+  <!--Firebase-->
+  <script src="bower_components\firebase\firebase.js"></script>
+
+  <!--Jquery-->
+  <script src="bower_components\jquery\dist\jquery.js"></script>
+
+<!--App-->
+  <script src="app/app.js"></script>
+
+<!--factories-->
+<script src="app\factories\authorizeFactory.js"></script>
+<script src="app\factories\pullInfoFactory.js"></script>
+
+
+<!--controllers-->
+  <script src="app/controllers/mainCon.js"></script>
+  <script src="app/controllers/signinCon.js"></script>
+  <script src="app/controllers/profileCon.js"></script>
+  <script src="app/controllers/storypageCon.js"></script>
+
+</body>
+</html>

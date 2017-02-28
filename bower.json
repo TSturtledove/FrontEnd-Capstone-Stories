@@ -1,0 +1,24 @@
+{
+  "name": "FrontEnd-Capstone-Stories",
+  "homepage": "https://github.com/TSturtledove/FrontEnd-Capstone-Stories",
+  "authors": [
+    "TSturtledove <roberttortorelli@yahoo.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "firebase": "^3.6.8",
+    "angular": "^1.6.1",
+    "angular-route": "^1.6.1",
+    "animate.css": "^3.5.2"
+  }
+}

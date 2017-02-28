@@ -1,0 +1,98 @@
+body {
+  background: url(img/parchmentback01.png);
+  font-family: "Gentium Book Basic", Vollkorn, "Libre Baskerville", Cardo, serif;
+}
+
+/*
+
+    font-family: 'Vollkorn', serif;
+
+    font-family: 'Libre Baskerville', serif;
+
+    font-family: 'Cardo', serif;
+
+    font-family: 'Gentium Book Basic', serif;
+*/
+
+.direction {
+  background-color: #dbb670;
+  border: none;
+  padding: 3px 10px;
+  margin: 3px 5px;
+}
+
+.basiclist {
+  list-style: none;
+}
+
+.linkstorylist {
+  text-decoration: none;
+  color: black;
+}
+
+.linkstorylist:hover {
+  color: #737373;
+}
+
+.basicspacer {
+  padding: 5px 6px;
+  margin: 5px 10px;
+}
+
+.imagesize {
+  /*margin: 5px auto;*/
+  width: 50%;
+  height: 50%;
+}
+
+.ninja {
+  visibility: hidden;
+}
+
+/*********************Flexboxclasses*******************/
+
+.maincontainer {
+  /*background: url(img\parchmentback02.png);*/
+  background-image: url(img\wat01.jpg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 5px solid black;
+  width: 75%;
+  height: auto;
+  margin: auto auto 5px;
+}
+
+.rowcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 3px 4px;
+}
+
+.rowStartcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 3px 4px;
+}
+
+.rowEndcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 3px 4px;
+}
+
+.imagecontainer {
+  display: flex;
+  justify-content: center;
+  /*width: 70%;*/
+  height: 70%;
+}
+
+.middle {
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}

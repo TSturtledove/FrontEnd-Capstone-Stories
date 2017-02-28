@@ -1,0 +1,19 @@
+<h1>Profile Test</h1>
+
+<a class="direction linkstorylist" ng-click="home()">Home</a>
+
+<a class="direction linkstorylist" ng-click="signout()">Signout</a>
+
+
+
+<div>
+  <ul class="basiclist">
+    <li class="basicspacer" ng-repeat="story in storyarray">
+      <!-- <p ng-repeat="(key, value) in name"> -->
+        <a class="linkstorylist" href="#/storypage/{{story}}">{{story}}</a>
+        <a class="direction linkstorylist" ng-click="remove(story)">Remove story from list</a>
+
+      <!-- </p> -->
+    </li>
+  </ul>
+</div>

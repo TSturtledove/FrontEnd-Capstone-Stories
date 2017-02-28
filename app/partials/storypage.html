@@ -1,0 +1,53 @@
+<!-- <h1>Story Page Test</h1> -->
+<div class="rowcontainer">
+  <a class="direction linkstorylist" ng-click="home()">Home</a>
+  <a class="direction linkstorylist" ng-click="signIn()">Signin/Register</a>
+  <a class="direction linkstorylist" ng-click="signout()">Signout</a>
+  <a class="direction linkstorylist" ng-click="profile()">Profile</a>
+</div>
+<h2>{{titleName}}</h2>
+
+<label>Check for sound: <input type="checkbox" ng-model="box1"></label><br/>
+
+<span ng-switch on="box1">
+    <!-- <h1 ng-switch-when="true" autoplay>{{title}}</h1> -->
+    <!-- <h1 ng-switch-default>{{title}}</h1> -->
+    <audio id="audio" class="ninja"  ng-switch-default src="audio/{{titleName}}{{position}}.mp3" controls></audio>
+
+<audio id="audio" class="ninja"  ng-switch-when="true" autoplay src="audio/{{titleName}}{{position}}.mp3" controls></audio>
+</span>
+
+
+<!-- <div>
+  <ul>
+  <li ng-repeat="line in text">{{line}}</li>
+</ul>
+</div> -->
+<div class="maincontainer">
+<div class="imagecontainer">
+  <img class="imagesize" src="img/{{titleName}}{{position}}.png">
+</div>
+
+<div class="middle">
+  <!-- <h3>Page {{position}}</h3> -->
+  <!-- <h2>{{titleName}}{{position}}</h2> -->
+  <!-- <h3>{{text}}</h3> -->
+  <h3>{{blockOText}}</h3>
+  <!-- <h1>{{money}}</h1> -->
+</div>
+</div>
+<div class="rowStartcontainer">
+<a class="direction linkstorylist" ng-click="startstuff()">begin story</a>
+
+<a class="direction linkstorylist" ng-click="losestuff()">Previous page</a>
+
+<a class="direction linkstorylist" ng-click="getstuff()">Next page</a>
+
+<a class="direction linkstorylist" ng-click="endstuff()">end story</a>
+</div>
+<div class="rowEndcontainer">
+<a class="direction linkstorylist" ng-click="mark()">mark</a>
+<a class="direction linkstorylist" ng-click="gotomark()">goto mark</a>
+<a class="direction linkstorylist" ng-click="clear()">clear mark</a>
+<a class="direction linkstorylist" ng-click="save()">save story</a>
+</div>
