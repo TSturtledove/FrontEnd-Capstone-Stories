@@ -1,4 +1,4 @@
-app.controller('storypageCon', function($scope, $http, pullInfoFactory, $routeParams, $location){
+app.controller('storypageCon', function($scope, $http, pullInfoFactory, authorizeFactory, $routeParams, $location){
 let innerStory = []
 let actualStory = []
 let bar = "|"
@@ -60,6 +60,7 @@ $scope.profile = function() {
 	$scope.getstuff = function(){
 		if(count>=actualStory.length-1){
 			count = actualStory.length
+			$scope.position = count
 			$scope.blockOText = "End of story, please read again"
 		}else{
 			count++
@@ -93,6 +94,8 @@ $scope.profile = function() {
 
 	$scope.endstuff = function(){
 		count = actualStory.length
+		console.log(count)
+		$scope.position = count
 		$scope.blockOText = "End of story, please read again"
 	}
 
@@ -289,7 +292,7 @@ $scope.gotomark = function(){
 							count = bookmarkarray[goto]
 							$scope.blockOText = actualStory[count]
 							$scope.position = count
-							
+
 							console.log("array is ",bookmarkarray)
 
 						}else{

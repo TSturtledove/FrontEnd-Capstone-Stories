@@ -1,18 +1,22 @@
 <h1>Main Page Test</h1>
 
-<button ng-click="signIn()">Signin/Register</button>
+<div>
+  <a class="direction linkstorylist" ng-click="signIn()">Signin/Register</a>
+  <a class="direction linkstorylist" ng-click="signout()">Signout</a>
+  <a class="direction linkstorylist" ng-click="profile()">Profile</a>
+
+</div>
 
 
 
-<button ng-click="signout()">Signout</button>
-<button ng-click="profile()">Profile</button>
+
 
 
 <div>
-  <ul>
+  <ul class="basiclist">
     <li ng-repeat="(key, value) in books">
       <!-- <p ng-repeat="(key, value) in name"> -->
-        <a href="#/storypage/{{value.title}}">{{value.title}}</a>
+        <a class="linkstorylist" href="#/storypage/{{value.title}}">{{value.title}}</a>
       <!-- </p> -->
     </li>
   </ul>
